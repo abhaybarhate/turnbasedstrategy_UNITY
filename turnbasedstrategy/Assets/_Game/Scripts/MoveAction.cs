@@ -28,12 +28,12 @@ public class MoveAction : BaseAction
     void Update()
     {
         if(!isActive) return;
-        float stoppingDistance = .1f;
+        float stoppingDistance = .05f;
         Vector3 moveDirection = (TargetPosition - transform.position).normalized;
         if (Vector3.Distance(transform.position, TargetPosition) > stoppingDistance)
         {
             
-            float moveSpeed = 4f;
+            float moveSpeed = 1.5f;
             transform.position += moveDirection * moveSpeed * Time.deltaTime;
 
             
