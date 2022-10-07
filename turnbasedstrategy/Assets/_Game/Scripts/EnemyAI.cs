@@ -23,6 +23,7 @@ public class EnemyAI : MonoBehaviour
     
     void Start()
     {
+
         TurnSystem.Instance.OnTurnChanges += TurnSystem_OnTurnChanged;
     }
 
@@ -42,8 +43,11 @@ public class EnemyAI : MonoBehaviour
                 Debug.Log("Its the Enemy's Chance");
                 if(timer <= 0f)
                 {
-                    state = State.WaitingForTurn;
-                    TurnSystem.Instance.NextTurn();
+                    state = State.Busy;
+                    if(TryTakeEnemyAIAction(SetStateTakingTurn))
+                    {
+                        state = State.Busy;
+                    }
                 }
                 break;
             case State.Busy :
@@ -53,6 +57,12 @@ public class EnemyAI : MonoBehaviour
             
     }
 
+    private void SetStateTakingTurn()
+    {
+        timer = 0.5f;
+        state = State.TakingATurn;
+    }
+
     private void TurnSystem_OnTurnChanged(object sender, EventArgs e)
     {
         if(!TurnSystem.Instance.IsPlayerTurn())
@@ -60,6 +70,35 @@ public class EnemyAI : MonoBehaviour
             state = State.TakingATurn;
             timer = 2f;
         }
+    }
+
+    private  bool TryTakeEnemyAIAction(Action onEnemyAIActionComplete)
+    {
+        Debug.Log("Take Enemy Ai ACtion");
+        foreach(Unit enemyUnit in UnitManager.Instance.GetEnemyUnitList())
+        {
+            if(TryTakeEnemyAIAction(enemyUnit, onEnemyAIActionComplete))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private bool TryTakeEnemyAIAction(Unit enemyUnit, Action onEnemyAIActionComplete)
+    {
+        SpinAction spinAction = enemyUnit.GetSpinAction();
+        GridPosition actionGridPosition = enemyUnit.GetGridPosition();
+        if(!spinAction.IsValidActionGridPosition(actionGridPosition))
+        {
+            return false;
+        }
+        if(!enemyUnit.TrySpendActionPointsToTakeAction(spinAction))
+        {   
+            return false;   
+        }
+        spinAction.TakeAction(actionGridPosition, onEnemyAIActionComplete);
+        return true;
     }
 
 }
