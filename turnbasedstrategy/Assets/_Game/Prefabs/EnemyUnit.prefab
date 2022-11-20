@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 2492795671191628546, guid: 9abaf6df915c3b843a3891d3c3a64b26,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2492795671191628546, guid: 9abaf6df915c3b843a3891d3c3a64b26,
         type: 3}
@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: 2492795671191628546, guid: 9abaf6df915c3b843a3891d3c3a64b26,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2492795671191628546, guid: 9abaf6df915c3b843a3891d3c3a64b26,
         type: 3}
@@ -83,7 +83,8 @@ PrefabInstance:
       propertyPath: isEnemy
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2512526837057980698, guid: 9abaf6df915c3b843a3891d3c3a64b26, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9abaf6df915c3b843a3891d3c3a64b26, type: 3}
 --- !u!1 &5872474618030460572 stripped
 GameObject:
@@ -91,7 +92,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 636749237802672830}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3161453388871358891
+--- !u!114 &4714346940037348899
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

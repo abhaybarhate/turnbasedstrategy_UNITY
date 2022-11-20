@@ -90,7 +90,7 @@ public class ShootAction : BaseAction
             targetUnit = targetUnit,
             shootingUnit = unit
         });
-        targetUnit.Damage(80f);
+        targetUnit.Damage(100f);
     }
 
     public override string GetActionName()
@@ -148,6 +148,9 @@ public class ShootAction : BaseAction
 
     public override EnemyAIAction GetEnemyAIAction(GridPosition gridPosition)
     {
+        Unit targetUnit = LevelGrid.Instance.GetUnitAtGridPosition(gridPosition);
+
+
         return new EnemyAIAction {
             gridPosition = gridPosition,
             actionValue = 100,

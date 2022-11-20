@@ -46,7 +46,7 @@ public class SpinAction : BaseAction
     {
         return new EnemyAIAction {
             gridPosition = gridPosition,
-            actionValue = 1,
+            actionValue = 0,
         };
     }
 

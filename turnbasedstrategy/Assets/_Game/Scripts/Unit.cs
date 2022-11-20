@@ -7,7 +7,7 @@ public class Unit : MonoBehaviour
 {
     [SerializeField] private Animator UnitAnimator;  
     [SerializeField] private bool isEnemy;
-    private const int ACTION_POINTS_MAX = 2;
+    private const int ACTION_POINTS_MAX = 3;
     
     public static event EventHandler OnAnyActionPointsChanged;
     public static event EventHandler OnAnyUnitSpawned;
